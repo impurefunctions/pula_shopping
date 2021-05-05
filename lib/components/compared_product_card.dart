@@ -19,6 +19,7 @@ class ComparedProductCard extends StatelessWidget {
     return Card(
       elevation: 8,
       child: ListTile(
+        onTap:press,
         title: Text.rich(
           TextSpan(
             text: "Sold by: ${e.seller}   ",

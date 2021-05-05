@@ -2,6 +2,7 @@ import 'package:e_commerce_app_flutter/components/compared_product_card.dart';
 import 'package:e_commerce_app_flutter/components/nothingtoshow_container.dart';
 import 'package:e_commerce_app_flutter/constants.dart';
 import 'package:e_commerce_app_flutter/screens/product_details/product_details_screen.dart';
+import 'package:e_commerce_app_flutter/screens/product_details_last/product_details_screen.dart';
 import 'package:e_commerce_app_flutter/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -97,7 +98,7 @@ class Body extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductDetailsScreen(
+                        builder: (context) => ProductDetailsScreenFin(
                           productId: searchResultProductsId[index],
                         ),
                       ),
