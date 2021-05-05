@@ -1,3 +1,4 @@
+import 'package:e_commerce_app_flutter/models/Product.dart';
 import 'package:e_commerce_app_flutter/screens/product_details/provider_models/ProductActions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,11 +7,11 @@ import 'components/body.dart';
 import 'components/fab.dart';
 
 class ProductDetailsScreenComp extends StatelessWidget {
-  final String productId;
+  final Product product;
 
   const ProductDetailsScreenComp({
     Key key,
-    @required this.productId,
+    @required this.product,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class ProductDetailsScreenComp extends StatelessWidget {
           backgroundColor: Color(0xFFF5F6F9),
         ),
         body: Body(
-          productId: productId,
+          product: product,
         ),
        // floatingActionButton: AddToCartFAB(productId: productId),
        // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

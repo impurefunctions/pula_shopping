@@ -6,14 +6,13 @@ import 'package:e_commerce_app_flutter/services/database/product_database_helper
 import 'package:e_commerce_app_flutter/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'product_review_section.dart';
 
 class Body extends StatelessWidget {
-  final String productId;
+  final Product product;
 
   const Body({
     Key key,
-    @required this.productId,
+    @required this.product,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,18 +23,15 @@ class Body extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(screenPadding)),
           child: FutureBuilder<Product>(
-            future: ProductDatabaseHelper().getProductWithID(productId),
+            future: ProductDatabaseHelper().getProductWithID(product.id),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 final product = snapshot.data;
                 return Column(
                   children: [
-                  //  ProductImages(product: product),
+                    ProductImages(product: product),
                     SizedBox(height: getProportionateScreenHeight(20)),
                     ProductActionsSection(product: product),
-                    SizedBox(height: getProportionateScreenHeight(20)),
-                   // ProductReviewsSection(product: product),
-                  //  SizedBox(height: getProportionateScreenHeight(100)),
                   ],
                 );
               } else if (snapshot.connectionState == ConnectionState.waiting) {

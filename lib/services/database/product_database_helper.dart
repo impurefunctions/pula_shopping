@@ -193,6 +193,25 @@ class ProductDatabaseHelper {
     return productsId;
   }
 
+
+  Future<List<String>> getComparedProductsList(String productName) async {
+    final productsCollectionReference =
+    firestore.collection(PRODUCTS_COLLECTION_NAME);
+
+    final querySnapshot = await productsCollectionReference
+        .where(Product.TITLE_KEY,
+        isEqualTo: productName)
+        .get();
+    List products = List<String>();
+    querySnapshot.docs.forEach((element) { products.add(element.id);});
+
+   /* for (final product in queryResult.docs) {
+      final pr = product;
+      products.add(product);
+    }*/
+    return products;
+  }
+
   Future<List<String>> get usersProductsList async {
     String uid = AuthentificationService().currentUser.uid;
     final productsCollectionReference =
